@@ -19,7 +19,7 @@ resource "azurerm_subnet" "vnet1_vmsubnet" {
   address_prefixes     = ["${var.Vnet1}.1.0/24"]
 }
 resource "azurerm_subnet" "Bastionsubnet" {
-  name                 = "AzureBastionSubnet"
+  name                = "AzureBastionSubnet"
   resource_group_name  = azurerm_resource_group.rgtest.name
   virtual_network_name = azurerm_virtual_network.vnet1.name
   address_prefixes     = ["${var.Vnet1}.2.0/24"]

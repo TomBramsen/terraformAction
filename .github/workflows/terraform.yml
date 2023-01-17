@@ -42,7 +42,7 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform'
+name: 'rg-connectivity-001'
 
 on:
   push:
@@ -54,7 +54,13 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'rg-connectivity-001'
+      env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.MVP_SUBSCRIPTION }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      
     runs-on: ubuntu-latest
     environment: production
 

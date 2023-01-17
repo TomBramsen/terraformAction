@@ -49,6 +49,7 @@ resource "azurerm_subnet" "vnet2_vmsubnet" {
 }
 
 //VWan
+/*
 resource "azurerm_virtual_wan" "VWan" {
   name                = "VWan"
   resource_group_name = azurerm_resource_group.rgtest.name
@@ -154,3 +155,5 @@ resource "azurerm_windows_virtual_machine" "vm2" {
     azurerm_subnet.vnet2_vmsubnet
   ]
 } 
+
+*/

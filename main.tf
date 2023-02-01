@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "rgtest" {
   location = var.resource_group_location
   name     = "Connectivity"
 }
-
+/*
 resource "azurerm_virtual_network" "vnet1" {
   location            = var.resource_group_location
   name                = "VNet1"

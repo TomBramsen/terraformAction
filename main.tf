@@ -3,6 +3,11 @@ resource "azurerm_resource_group" "rgtest" {
   location = var.resource_group_location
   name     = "Connectivity2"
 }
+
+module "dns" {
+  source = "./modules/dns"
+}
+
 /*
 resource "azurerm_virtual_network" "vnet1" {
   location            = var.resource_group_location

@@ -28,6 +28,7 @@ $TerraformStorageName="terraformlh0001"
 $TerraformStorageContainer =  "tfstate"
 
 
+
 az login --tenant  $ARM_TENANT_ID
 az account set --subscription $TerraformStorageSub 
 #az account set --subscription "45ded6c5-f6e0-4509-a7ab-ca497d860973"  ## connectivity

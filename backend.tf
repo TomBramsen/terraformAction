@@ -9,7 +9,7 @@ terraform {
     resource_group_name  = "TerraformShared"
     storage_account_name = "terraformlh0001"
     container_name       = "tfstate"
-     key                  = "GitHub-Terraform-rg-connectivity-001"
+    key                  = "tfstate"
   }
 }
 provider "azurerm" {

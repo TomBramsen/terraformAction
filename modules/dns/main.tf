@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "dnsprivatezones" {
-  name     = "example-resources"
+  name     = var.rg_name
   location = var.location
 }
 

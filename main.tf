@@ -27,10 +27,10 @@ resource "azurerm_shared_image_gallery" "vmStoreGallery" {
 }
 
 resource "azurerm_role_assignment" "exampleo" {
-  scope              = azurerm_shared_image_gallery.vmStoreGallery.id
-  role_definition_id = "acdd72a7-3385-48ef-bd42-f606fba81ae7"    # Reader
-  principal_id       = "75502241-197f-4dc8-8779-d6bae35864c3"    # ObjectID
-}
+    name               = "00000000-0000-0000-0000-000000000000"
+ scope              = azurerm_shared_image_gallery.vmStoreGallery.id
+  role_definition_id = "acdd72a7-3385-48ef-bd42-f606fba81ae7"    
+  principal_id       = "75502241-197f-4dc8-8779-d6bae35864c3"   
 /*
 resource "azurerm_virtual_network" "vnet1" {
   location            = var.resource_group_location

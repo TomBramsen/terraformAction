@@ -3,7 +3,6 @@ resource "azurerm_resource_group" "dnsprivatezones" {
   location = var.location
 }
 
-}
 resource "azurerm_private_dns_zone" "azureautomation" {
   name                = "privatelink.azure-automation.net"
   resource_group_name = azurerm_resource_group.dnsprivatezones.name

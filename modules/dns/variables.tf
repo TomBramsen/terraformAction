@@ -3,9 +3,9 @@ variable "location"   {
     default = "northeurope"
 }
 
-#variable "tags" {
-#  type = map(any)
-#}
+variable "tags" {
+  type = map(any)
+}
 
 
 variable "rg_name" {

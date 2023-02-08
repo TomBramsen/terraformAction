@@ -6,6 +6,24 @@ resource "azurerm_resource_group" "rgtest" {
 
 module "dns" {
   source = "./modules/dns"
+  tags = var.tags
+}
+
+
+
+resource "azurerm_resource_group" "vmStoreRg" {
+  name                   = lower("${var.azure_vm_store_config.rg_name}-${local.name_postfix}")
+  location               = var.location
+  tags                   = var.tags
+ }
+
+
+resource "azurerm_shared_image_gallery" "vmStoreGallery" {
+  name                = "vmstore"
+  resource_group_name = azurerm_resource_group.vmStoreRg.name
+  location            = azurerm_resource_group.vmStoreRg.location
+  description         = "description"
+  tags                = var.tags
 }
 
 /*

@@ -1,11 +1,14 @@
+# https://gist.github.com/liamfoneill/f78698854d5dd23a9e6ab08ff044f38a
 resource "azurerm_resource_group" "dnsprivatezones" {
   name     = var.rg_name
   location = var.location
+  tags     = var.tags
 }
 
 resource "azurerm_private_dns_zone" "azureautomation" {
   name                = "privatelink.azure-automation.net"
   resource_group_name = azurerm_resource_group.dnsprivatezones.name
+  tags                = var.tags
 }
 
 resource "azurerm_private_dns_zone" "sqldatabase" {

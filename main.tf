@@ -31,7 +31,7 @@ resource "azurerm_role_assignment" "exampleo" {
    role_definition_name = "Reader" 
   principal_id       = "3667af54-f188-4b48-bc72-e3fa216e0bec"   
 }
-/*
+
 resource "azurerm_virtual_network" "vnet1" {
   location            = var.resource_group_location
   name                = "VNet1"
@@ -59,7 +59,6 @@ resource "azurerm_subnet" "GWsubnet" {
   address_prefixes     = ["${var.Vnet1}.3.0/24"]
 }
 
-
 // Vnet 2
 
 resource "azurerm_virtual_network" "vnet2" {
@@ -77,7 +76,6 @@ resource "azurerm_subnet" "vnet2_vmsubnet" {
 }
 
 //VWan
-/*
 resource "azurerm_virtual_wan" "VWan" {
   name                = "VWan"
   resource_group_name = azurerm_resource_group.rgtest.name
@@ -184,4 +182,3 @@ resource "azurerm_windows_virtual_machine" "vm2" {
   ]
 } 
 
-*/

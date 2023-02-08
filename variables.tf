@@ -2,6 +2,12 @@ variable "resource_group_location" {
   default     = "westeurope"
   description = "Location of the resource group."
 }
+variable "tags" {
+  type = map
+  default = {
+    "Owner" = "TP"
+  }
+}
 variable "location" {
   default     = "westeurope"
   description = "Location of the resource group."

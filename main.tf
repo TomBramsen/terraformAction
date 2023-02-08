@@ -12,7 +12,7 @@ module "dns" {
 
 
 resource "azurerm_resource_group" "vmStoreRg" {
-  name                   = lower("${var.azure_vm_store_config.rg_name}-${local.name_postfix}")
+  name                   = "vmstoreRG"
   location               = var.location
   tags                   = var.tags
  }

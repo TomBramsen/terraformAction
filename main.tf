@@ -27,9 +27,8 @@ resource "azurerm_shared_image_gallery" "vmStoreGallery" {
 }
 
 resource "azurerm_role_assignment" "exampleo" {
-    name               = "00000000-0000-0000-0000-000000000000"
  scope              = azurerm_resource_group.vmStoreRg.id
-  role_definition_id = "acdd72a7-3385-48ef-bd42-f606fba81ae7"    
+   role_definition_name = "Reader" 
   principal_id       = "3667af54-f188-4b48-bc72-e3fa216e0bec"   
 }
 /*

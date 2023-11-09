@@ -1,0 +1,60 @@
+name: Infrastructure - Deploy - Dev - test
+on:
+  workflow_dispatch:
+
+jobs: 
+  deploy:
+    name: Infrastructure - Deploy - Dev
+    runs-on: ubuntu-latest
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
+    steps:
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: az login
+        shell: bash
+        run: az login --service-principal -u ${{ vars.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_ID }} --tenant ${{ secrets.ARM_TENANT_ID }}
+
+      - name: Make Storage Account network public accessable
+        shell: bash
+        run: |
+         storage='test8550acc'
+         e=$(az storage account list --query "[?name=='$storage'].name" | jq '. == []')
+
+         if [ $e = 'false' ]; then
+           az storage account update --name $storage --default-action "Allow"
+         else
+           echo '$storage does not exists'
+         fi
+
+      - name: Terraform init
+        run: terraform init  -backend-config="backend.dev.tfvars"
+        working-directory: ./infrastructure/terraform
+      
+      - name: Terraform plan
+        run: terraform plan  -var-file="dev.tfvars" -input=false 
+        working-directory: ./infrastructure/terraform
+
+      - name: Terraform apply
+        run: terraform apply -var-file="dev.tfvars" -auto-approve -input=false
+        working-directory: ./infrastructure/terraform
+
+      - name: Make Storage Account accessable from internal net only
+        shell: bash
+        run: |
+         storage='test8550acc'
+         e=$(az storage account list --query "[?name=='$storage'].name" | jq '. == []')
+
+         if [ $e = 'false' ]; then
+           az storage account update --name $storage --default-action "Deny"
+         else
+           echo '$storage does not exists'
+         fi
+      
